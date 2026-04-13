@@ -131,6 +131,7 @@ function ContactForm({ emailLabel, emailSub }: { emailLabel: string; emailSub: s
 
 export default function Contact() {
   const { contact } = useContent();
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   // Only the non-email links (LinkedIn, Portfolio)
   const externalLinks = contact.links.filter((l) => l.href !== "mailto:apavirooppaul10@gmail.com");
 
@@ -160,6 +161,9 @@ export default function Contact() {
       <div className="border-t-2 border-[#3F3F46]">
         {externalLinks.map(({ label, sub, href, external }, i) => {
           const Icon = linkIcons[i];
+          // LinkedIn (i=0) is always yellow; other rows activate on hover
+          const isLinkedIn = i === 0;
+          const isActive = isLinkedIn || hoveredIdx === i;
           return (
             <motion.a
               key={href}
@@ -170,24 +174,30 @@ export default function Contact() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.08 }}
-              className="group flex items-center justify-between py-7 md:py-9 border-b-2 border-[#3F3F46] hover:bg-[#DFE104] hover:border-[#DFE104] hover:px-6 transition-all duration-300"
+              onMouseEnter={() => setHoveredIdx(i)}
+              onMouseLeave={() => setHoveredIdx(null)}
+              className={`group flex items-center justify-between py-7 md:py-9 border-b-2 transition-all duration-300 ${
+                isActive
+                  ? "bg-[#DFE104] border-[#DFE104] px-6"
+                  : "border-[#3F3F46] hover:bg-[#DFE104] hover:border-[#DFE104] hover:px-6"
+              }`}
             >
               <div className="max-w-[95vw] mx-auto w-full flex items-center justify-between">
                 <div className="flex items-center gap-5">
-                  <span className="text-[#A1A1AA] group-hover:text-black transition-colors duration-300 shrink-0">
+                  <span className={`transition-colors duration-300 shrink-0 ${isActive ? "text-black" : "text-[#A1A1AA] group-hover:text-black"}`}>
                     <Icon size={22} />
                   </span>
-                  <span className="text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tighter text-[#FAFAFA] group-hover:text-black transition-colors duration-300">
+                  <span className={`text-xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tighter transition-colors duration-300 ${isActive ? "text-black" : "text-[#FAFAFA] group-hover:text-black"}`}>
                     {label}
                   </span>
                 </div>
                 <div className="flex items-center gap-4 md:gap-6 shrink-0">
-                  <span className="hidden md:block text-sm font-mono text-[#A1A1AA] group-hover:text-black/60 transition-colors duration-300">
+                  <span className={`hidden md:block text-sm font-mono transition-colors duration-300 ${isActive ? "text-black/60" : "text-[#A1A1AA] group-hover:text-black/60"}`}>
                     {sub}
                   </span>
                   <ArrowUpRight
                     size={22}
-                    className="text-[#A1A1AA] group-hover:text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
+                    className={`transition-all duration-200 ${isActive ? "text-black translate-x-1 -translate-y-1" : "text-[#A1A1AA] group-hover:text-black group-hover:translate-x-1 group-hover:-translate-y-1"}`}
                   />
                 </div>
               </div>

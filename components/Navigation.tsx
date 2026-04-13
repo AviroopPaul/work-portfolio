@@ -12,8 +12,8 @@ const navLinks = [
   { label: "Contact",  href: "#contact"  },
 ];
 
-const EASE = [0.16, 1, 0.3, 1];
-const SPRING = { type: "spring", stiffness: 280, damping: 28 };
+const EASE = [0.16, 1, 0.3, 1] as const;
+const SPRING = { type: "spring", stiffness: 280, damping: 28 } as const;
 
 export default function Navigation() {
   const siteContent = useContent();
@@ -55,7 +55,7 @@ export default function Navigation() {
           layout
           transition={SPRING}
           className="pointer-events-auto flex items-center bg-[#09090B]/80 backdrop-blur-md border-2 border-[#3F3F46]"
-          style={{ borderRadius: 9999 }}
+          style={{ borderRadius: 6 }}
         >
           {/* Logo inside pill — appears when scrolled */}
           <AnimatePresence mode="popLayout">
@@ -83,7 +83,7 @@ export default function Navigation() {
                 key={href}
                 href={href}
                 className="px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-white/10 transition-all duration-200"
-                style={{ borderRadius: 9999 }}
+                style={{ borderRadius: 4 }}
               >
                 {label}
               </a>
@@ -102,7 +102,7 @@ export default function Navigation() {
                 exit={{ opacity: 0, width: 0 }}
                 transition={{ duration: 0.35, ease: EASE }}
                 className="flex items-center justify-center shrink-0 overflow-hidden mr-1.5"
-                style={{ borderRadius: 9999, height: 36, backgroundColor: "#DFE104" }}
+                style={{ borderRadius: 4, height: 36, backgroundColor: "#DFE104" }}
               >
                 <Hammer size={15} className="text-black" />
               </motion.a>

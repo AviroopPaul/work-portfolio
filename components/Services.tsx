@@ -66,7 +66,7 @@ export default function Services() {
                   </h3>
                 </div>
 
-                <p className="relative z-10 text-base text-[#A1A1AA] group-hover:text-black/70 transition-colors duration-300 leading-relaxed">
+                <p className="relative z-10 text-base text-[#A1A1AA] group-hover:text-black/70 leading-relaxed opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300">
                   {service.description}
                 </p>
               </motion.div>
