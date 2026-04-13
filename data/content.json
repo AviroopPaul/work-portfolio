@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "cta": "Let's Build"
+  },
+  "hero": {
+    "label": "Full Stack · AI",
+    "headlineLine1": "From Idea",
+    "headlineLine2": "To Live",
+    "headlineLine3": "Product —",
+    "headlineAccent": "In Weeks.",
+    "cyclePhrases": [
+      "In Weeks.",
+      "That Works.",
+      "That's Tested."
+    ],
+    "body": "I take your idea, build it to production standards, and hand you a live URL — no hand-holding needed, no months of waiting.",
+    "ctaPrimary": "Start a Project",
+    "ctaSecondary": "See What I Build"
+  },
+  "stats": [
+    {
+      "value": "3+",
+      "label": "Years Shipping"
+    },
+    {
+      "value": "5",
+      "label": "Enterprise Clients"
+    },
+    {
+      "value": "100%",
+      "label": "Production Grade"
+    }
+  ],
+  "clients": {
+    "heading": "Trusted by teams at",
+    "logos": [
+      {
+        "name": "Nokia",
+        "file": "nokia.png"
+      },
+      {
+        "name": "Fenmo",
+        "file": "fenmo.avif"
+      },
+      {
+        "name": "SpotDraft",
+        "file": "spotdraft.png"
+      },
+      {
+        "name": "AtomicWork",
+        "file": "atomicwork.svg"
+      },
+      {
+        "name": "Think41",
+        "file": "think41.svg"
+      }
+    ]
+  },
+  "services": {
+    "label": "Services",
+    "headingLine1": "What I Build",
+    "headingAccent": "For You",
+    "items": [
+      {
+        "title": "AI Chatbot for Your Website",
+        "description": "Turn your entire site, docs, and knowledge base into a smart assistant — answering questions, qualifying leads, and converting visitors around the clock."
+      },
+      {
+        "title": "Full-Stack MVP, Production-Ready",
+        "description": "Backend, frontend, deployment — a live URL to share with anyone on day one. Built to real production standards, not just a throwaway demo."
+      },
+      {
+        "title": "Voice Integration",
+        "description": "Industry-standard latency, Indian language support, and state-of-the-art intelligence. Voice that actually works — not a party trick."
+      },
+      {
+        "title": "Multi-Agent Agentic Systems",
+        "description": "Custom agentic workflows with tailored tools for your exact use case. Automate complex operations at scale, with full observability."
+      },
+      {
+        "title": "PRD & Feature-Driven Dev",
+        "description": "I write the spec, break it into features, and keep you in sync at every step. You're never guessing what's been built or what's next."
+      },
+      {
+        "title": "Pay Per Feature",
+        "description": "No retainers, no bloat, no waste. You pay only for what gets shipped — transparent, milestone-based, built for how early-stage actually works."
+      }
+    ]
+  },
+  "tech": {
+    "label": "The Stack",
+    "headingLine1": "Tools I",
+    "headingAccent": "Ship With",
+    "items": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Django",
+      "FastAPI",
+      "FastMCP",
+      "LangChain",
+      "Google ADK",
+      "LangGraph",
+      "LiveKit",
+      "Pipecat",
+      "Testing"
+    ]
+  },
+  "contact": {
+    "label": "Contact",
+    "headingLine1": "Let's Build",
+    "headingAccent": "Something.",
+    "body": "Got an idea, a deadline, or a rough sketch on a napkin? I'm in.",
+    "emailLabel": "Drop me a line",
+    "emailSub": "apavirooppaul10@gmail.com",
+    "links": [
+      {
+        "label": "Connect on LinkedIn",
+        "sub": "linkedin.com/in/avirooppaul",
+        "href": "https://www.linkedin.com/in/avirooppaul",
+        "external": true
+      },
+      {
+        "label": "Visit my portfolio",
+        "sub": "avirooppaul.site",
+        "href": "https://avirooppaul.site",
+        "external": true
+      },
+      {
+        "label": "Drop me a line",
+        "sub": "apavirooppaul10@gmail.com",
+        "href": "mailto:apavirooppaul10@gmail.com",
+        "external": false
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Based out of Bengaluru, India, building for everywhere",
+    "name": "Aviroop Paul"
+  }
+}
