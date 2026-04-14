@@ -32,6 +32,8 @@ Sales-focused single-page portfolio targeting early-stage founders for contract/
 ## Content
 **Single source of truth**: `lib/content.ts` — all visible text lives here. Never hardcode strings in components.
 
+**Admin panel rule**: Whenever you add, remove, or rename a content field that is rendered in the frontend, you MUST also update `app/admin/page.tsx` to reflect that change — add the corresponding input, remove the obsolete field, or rename the label. The admin panel must always stay in sync with what the site actually renders.
+
 ## File Map
 ```
 app/
