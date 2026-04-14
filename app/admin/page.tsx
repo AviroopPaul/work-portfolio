@@ -341,7 +341,6 @@ export default function AdminPage() {
 
           {/* HERO */}
           <SectionWrap id="hero" title="Hero" onCopySection={copySection}>
-            <Field label="Label" value={c.hero.label} onChange={(v) => setHero("label", v)} />
             <Field label="Headline Line 1" value={c.hero.headlineLine1} onChange={(v) => setHero("headlineLine1", v)} />
             <Field label="Headline Line 2" value={c.hero.headlineLine2} onChange={(v) => setHero("headlineLine2", v)} />
             <Field label="Headline Line 3" value={c.hero.headlineLine3} onChange={(v) => setHero("headlineLine3", v)} />
@@ -354,6 +353,17 @@ export default function AdminPage() {
                   setC((p) => ({ ...p, hero: { ...p.hero, cyclePhrases: e.target.value.split("\n").filter(Boolean) } }))
                 }
                 rows={3}
+                className="w-full bg-[#1A1A1A] border border-[#2A2A2A] text-[#E5E5E5] text-sm px-3 py-2 resize-y focus:outline-none focus:border-[#DFE104] transition-colors font-mono"
+              />
+            </div>
+            <div className="flex flex-col gap-3">
+              <label className="text-[10px] font-bold uppercase tracking-widest text-[#555]">Background Scramble Items (one per line)</label>
+              <textarea
+                value={c.hero.slotItems.join("\n")}
+                onChange={(e) =>
+                  setC((p) => ({ ...p, hero: { ...p.hero, slotItems: e.target.value.split("\n").filter(Boolean) } }))
+                }
+                rows={5}
                 className="w-full bg-[#1A1A1A] border border-[#2A2A2A] text-[#E5E5E5] text-sm px-3 py-2 resize-y focus:outline-none focus:border-[#DFE104] transition-colors font-mono"
               />
             </div>

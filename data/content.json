@@ -13,6 +13,16 @@
       "That Works.",
       "That's Tested."
     ],
+    "slotItems": [
+      "AI Chatbots",
+      "Agentic Workflows",
+      "Custom MCP Skills",
+      "Voice Assistants",
+      "Full-Stack MVPs",
+      "RAG Pipelines",
+      "API Integrations",
+      "Autonomous Agents"
+    ],
     "body": "I take your idea, build it to production standards, and hand you a live URL — no hand-holding needed, no months of waiting.",
     "ctaPrimary": "Start a Project",
     "ctaSecondary": "See What I Build"
