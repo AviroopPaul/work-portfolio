@@ -31,7 +31,7 @@ export default function StatsMarquee() {
               key={value + label}
               animate={{ flex: isActive ? 3 : 1 }}
               transition={{ duration: 0.6, ease: EASE }}
-              className="flex flex-col items-center justify-center overflow-hidden py-2 md:py-3 cursor-default select-none"
+              className="flex flex-col items-center justify-center overflow-hidden py-5 md:py-6 px-4 md:px-6 cursor-default select-none"
               onClick={() => setActive(i)}
               onMouseEnter={() => { setIsHovering(true); setActive(i); }}
             >

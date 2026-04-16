@@ -126,7 +126,7 @@ export default function Navigation() {
       <nav className={`md:hidden fixed top-0 inset-x-0 z-[40] transition-colors duration-200 ${
         scrolled || isOpen ? "bg-[#09090B] border-b-2 border-[#3F3F46]" : "bg-transparent"
       }`}>
-        <div className="max-w-[95vw] mx-auto h-14 flex items-center justify-between">
+        <div className="max-w-[95vw] mx-auto h-14 flex items-center justify-between px-4 md:px-0">
           <a href="#" aria-label="Home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/ap-favicon.png" alt="AP" className="h-8 w-8 object-contain" />
@@ -144,7 +144,7 @@ export default function Navigation() {
         <div className={`overflow-hidden transition-all duration-300 bg-[#09090B] ${
           isOpen ? "max-h-screen border-b-2 border-[#3F3F46]" : "max-h-0"
         }`}>
-          <div className="max-w-[95vw] mx-auto pb-6 pt-2 flex flex-col gap-1">
+          <div className="max-w-[95vw] mx-auto pb-6 pt-2 flex flex-col gap-1 px-4 md:px-0">
             {navLinks.map(({ label, href }) => (
               <a
                 key={href}

@@ -12,7 +12,7 @@ export default function TechStack() {
 
   return (
     <section id="tech" className="py-20 md:py-28 border-t-2 border-[#3F3F46]">
-      <div className="max-w-[95vw] mx-auto mb-12 md:mb-16">
+      <div className="max-w-[95vw] mx-auto mb-12 md:mb-16 px-4 md:px-0">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
