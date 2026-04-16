@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Bot, Rocket, Mic, Network, FileText, CreditCard } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -10,11 +11,12 @@ const icons: LucideIcon[] = [Bot, Rocket, Mic, Network, FileText, CreditCard];
 
 export default function Services() {
   const { services } = useContent();
+  const [tappedCard, setTappedCard] = useState<number | null>(null);
 
   return (
     <section id="services" className="py-20 md:py-28 border-t-2 border-[#3F3F46]">
       {/* Heading */}
-      <div className="max-w-[95vw] mx-auto mb-12 md:mb-16">
+      <div className="max-w-[95vw] mx-auto mb-12 md:mb-16 px-4 md:px-0">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,6 +40,7 @@ export default function Services() {
           {services.items.map((service, i) => {
             const Icon = icons[i];
             const num = String(i + 1).padStart(2, "0");
+            const isActive = tappedCard === i;
             return (
               <motion.div
                 key={service.title}
@@ -45,12 +48,17 @@ export default function Services() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-                className="group relative bg-[#09090B] p-8 md:p-10 hover:bg-[#DFE104] transition-colors duration-300 cursor-default overflow-hidden min-h-[280px] flex flex-col justify-between"
+                onClick={() => setTappedCard(isActive ? null : i)}
+                className={`group relative p-8 md:p-10 transition-colors duration-300 cursor-pointer overflow-hidden min-h-[280px] flex flex-col justify-between ${
+                  isActive ? "bg-[#DFE104]" : "bg-[#09090B] hover:bg-[#DFE104]"
+                }`}
               >
                 {/* Decorative background number */}
                 <span
                   aria-hidden
-                  className="absolute -top-3 -right-1 text-[7rem] md:text-[8rem] font-bold leading-none tracking-tighter text-[#27272A] group-hover:text-[rgba(0,0,0,0.07)] transition-colors duration-300 select-none pointer-events-none"
+                  className={`absolute -top-3 -right-1 text-[7rem] md:text-[8rem] font-bold leading-none tracking-tighter transition-colors duration-300 select-none pointer-events-none ${
+                    isActive ? "text-[rgba(0,0,0,0.07)]" : "text-[#27272A] group-hover:text-[rgba(0,0,0,0.07)]"
+                  }`}
                 >
                   {num}
                 </span>
@@ -59,14 +67,22 @@ export default function Services() {
                   <Icon
                     size={28}
                     strokeWidth={1.75}
-                    className="text-[#DFE104] group-hover:text-black transition-colors duration-300 mb-6"
+                    className={`transition-colors duration-300 mb-6 ${
+                      isActive ? "text-black" : "text-[#DFE104] group-hover:text-black"
+                    }`}
                   />
-                  <h3 className="text-xl md:text-2xl font-bold uppercase tracking-tighter text-[#FAFAFA] group-hover:text-black transition-colors duration-300 mb-3 leading-tight">
+                  <h3 className={`text-xl md:text-2xl font-bold uppercase tracking-tighter transition-colors duration-300 mb-3 leading-tight ${
+                    isActive ? "text-black" : "text-[#FAFAFA] group-hover:text-black"
+                  }`}>
                     {service.title}
                   </h3>
                 </div>
 
-                <p className="relative z-10 text-base text-[#A1A1AA] group-hover:text-black/70 leading-relaxed opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300">
+                <p className={`relative z-10 text-base leading-relaxed transition-all duration-300 ${
+                  isActive
+                    ? "text-black/70 opacity-100 translate-y-0"
+                    : "text-[#A1A1AA] group-hover:text-black/70 opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0"
+                }`}>
                   {service.description}
                 </p>
               </motion.div>

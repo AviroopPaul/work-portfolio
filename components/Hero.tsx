@@ -1,64 +1,15 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useContent } from "@/lib/ContentContext";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const CYCLE_INTERVAL = 2200; // shared by both the phrase cycle and the scramble
-
-const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const FRAMES = 22;   // animation frames total
-const FPS    = 38;   // ms per frame  →  ~836ms scramble duration
-
-/** Scrambles text character-by-character, resolving left-to-right. */
-function useScramble(target: string) {
-  const [display, setDisplay] = useState(() =>
-    target.split("").map(ch =>
-      ch === " " ? " " : CHARS[Math.floor(Math.random() * CHARS.length)]
-    ).join("")
-  );
-  const frameRef = useRef(0);
-
-  useEffect(() => {
-    frameRef.current = 0;
-    // Immediately scramble before the interval ticks
-    setDisplay(
-      target.split("").map(ch =>
-        ch === " " ? " " : CHARS[Math.floor(Math.random() * CHARS.length)]
-      ).join("")
-    );
-
-    const id = setInterval(() => {
-      frameRef.current += 1;
-      const f = frameRef.current;
-
-      setDisplay(
-        target.split("").map((ch, i) => {
-          if (ch === " ") return " ";
-          // Each character resolves at a staggered frame, left-to-right
-          const resolveAt = Math.floor((i / target.length) * FRAMES * 0.65);
-          if (f > resolveAt) return ch;
-          return CHARS[Math.floor(Math.random() * CHARS.length)];
-        }).join("")
-      );
-
-      if (f >= FRAMES) {
-        setDisplay(target);
-        clearInterval(id);
-      }
-    }, FPS);
-
-    return () => clearInterval(id);
-  }, [target]);
-
-  return { display };
-}
+const CYCLE_INTERVAL = 2200;
 
 export default function Hero() {
   const { hero } = useContent();
   const CYCLE_PHRASES = hero.cyclePhrases;
-  const SLOT_ITEMS    = hero.slotItems;
 
   const lines = [
     { text: hero.headlineLine1 },
@@ -67,23 +18,17 @@ export default function Hero() {
   ];
 
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [slotCounter, setSlotCounter] = useState(0);
 
-  // Single timer drives both the phrase cycle and the background scramble in lockstep
   useEffect(() => {
     const t = setInterval(() => {
       setPhraseIndex(i => (i + 1) % CYCLE_PHRASES.length);
-      setSlotCounter(c => c + 1);
     }, CYCLE_INTERVAL);
     return () => clearInterval(t);
   }, [CYCLE_PHRASES.length]);
 
-  const activeItem = SLOT_ITEMS[slotCounter % SLOT_ITEMS.length];
-  const { display } = useScramble(activeItem);
-
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-16 pb-0 overflow-x-hidden">
-      <div className="max-w-[95vw] mx-auto w-full py-20 md:py-32">
+      <div className="max-w-[95vw] mx-auto w-full py-20 md:py-32 px-4 md:px-0">
 
         {/* ── LEFT: headline + body + CTAs ── */}
         <div className="min-w-0">
@@ -149,23 +94,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Background scramble — right half only ── */}
-      <div
-        aria-hidden
-        className="absolute right-0 top-0 bottom-0 w-[52%] flex items-center overflow-hidden select-none pointer-events-none px-[3vw]"
-      >
-        <p
-          className="font-mono font-bold uppercase text-right w-full text-[#FAFAFA]"
-          style={{
-            fontSize: "clamp(1.8rem, 3.5vw, 4rem)",
-            letterSpacing: "-0.03em",
-            lineHeight: 1.05,
-            opacity: 0.07,
-          }}
-        >
-          {display}
-        </p>
-      </div>
     </section>
   );
 }

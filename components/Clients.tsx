@@ -38,7 +38,7 @@ export default function Clients() {
   const { clients } = useContent();
   return (
     <section id="clients" className="py-20 md:py-28 border-t-2 border-[#3F3F46]">
-      <div className="max-w-[95vw] mx-auto mb-12 md:mb-16">
+      <div className="max-w-[95vw] mx-auto mb-12 md:mb-16 px-4 md:px-0">
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -58,7 +58,7 @@ function ContactForm({ emailLabel, emailSub }: { emailLabel: string; emailSub: s
         onClick={() => setOpen((v) => !v)}
         className="group w-full flex items-center justify-between py-7 md:py-9 hover:bg-[#DFE104] hover:border-[#DFE104] hover:px-6 transition-all duration-300"
       >
-        <div className="max-w-[95vw] mx-auto w-full flex items-center justify-between">
+        <div className="max-w-[95vw] mx-auto w-full flex items-center justify-between px-4 md:px-0">
           <div className="flex items-center gap-5">
             <span className="text-[#A1A1AA] group-hover:text-black transition-colors duration-300 shrink-0">
               <Mail size={22} />
@@ -90,7 +90,7 @@ function ContactForm({ emailLabel, emailSub }: { emailLabel: string; emailSub: s
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="max-w-[95vw] mx-auto py-6 md:py-8 flex flex-col gap-4">
+            <div className="max-w-[95vw] mx-auto py-6 md:py-8 flex flex-col gap-4 px-4 md:px-0">
               <input
                 type="text"
                 placeholder="Your name or email (optional)"
@@ -137,7 +137,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="pt-20 pb-0 md:pt-28 border-t-2 border-[#3F3F46]">
-      <div className="max-w-[95vw] mx-auto mb-12 md:mb-20">
+      <div className="max-w-[95vw] mx-auto mb-12 md:mb-20 px-4 md:px-0">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -182,7 +182,7 @@ export default function Contact() {
                   : "border-[#3F3F46] hover:bg-[#DFE104] hover:border-[#DFE104] hover:px-6"
               }`}
             >
-              <div className="max-w-[95vw] mx-auto w-full flex items-center justify-between">
+              <div className="max-w-[95vw] mx-auto w-full flex items-center justify-between px-4 md:px-0">
                 <div className="flex items-center gap-5">
                   <span className={`transition-colors duration-300 shrink-0 ${isActive ? "text-black" : "text-[#A1A1AA] group-hover:text-black"}`}>
                     <Icon size={22} />
